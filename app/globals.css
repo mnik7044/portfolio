@@ -92,8 +92,13 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: var(--bg);
-  scroll-padding-top: calc(var(--header-h) + 1.5rem);
   hanging-punctuation: first last;
+}
+
+/* Only pages with the sticky header need the offset. On other pages it would
+   make Next's scroll-to-top think the page top is hidden and nudge it down. */
+html:has(.site-header) {
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
 
 @media (prefers-reduced-motion: no-preference) {
