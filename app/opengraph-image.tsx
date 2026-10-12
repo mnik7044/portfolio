@@ -52,7 +52,7 @@ export default async function OpengraphImage() {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18, letterSpacing: 3.2, color: C.fg3 }}>
-          <span>BACKEND ENGINEER · KOLKATA, INDIA</span>
+          <span>BACKEND & PRODUCT ENGINEER · KOLKATA</span>
           <span style={{ color: C.fg2 }}>VRYSE · AUGUSTA LABS</span>
         </div>
 

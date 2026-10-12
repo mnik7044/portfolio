@@ -43,6 +43,7 @@ export function GET() {
     `- Email: ${profile.email}`,
     `- GitHub: ${profile.links.github}`,
     `- LinkedIn: ${profile.links.linkedin}`,
+    `- X: ${profile.links.x}`,
     `- Website: ${SITE_URL}`,
     '',
   ].join('\n');

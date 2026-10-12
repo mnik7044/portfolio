@@ -22,6 +22,9 @@ export function SiteFooter() {
               <ExternalLink href={profile.links.linkedin}>LinkedIn</ExternalLink>
             </li>
             <li>
+              <ExternalLink href={profile.links.x}>X</ExternalLink>
+            </li>
+            <li>
               <a className="link" href={`mailto:${profile.email}`}>
                 Email
               </a>
@@ -35,7 +38,6 @@ export function SiteFooter() {
         </div>
         <div className="site-footer__bottom">
           <p className="label">© {new Date().getFullYear()} Nikhil Mishra</p>
-          <p className="label">Set in Instrument Serif, Geist &amp; Geist Mono · Built with Next.js</p>
         </div>
       </div>
     </footer>

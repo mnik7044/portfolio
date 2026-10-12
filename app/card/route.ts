@@ -43,8 +43,8 @@ export function GET() {
     '',
     ...current.map((role, i) => row(i === 0 ? 'Now' : '', `${role.title} @ ${style.amber(role.org)}`)),
     '',
-    row('Builds', 'agentic systems, data pipelines,'),
-    row('', 'LLM backends and the infra under them'),
+    row('Builds', 'AI products, from first version to scale:'),
+    row('', 'agents, pipelines, search and the infra'),
     '',
     row('Stack', 'TypeScript · Python · Node.js · PostgreSQL'),
     row('', 'Trigger.dev · AWS · Cloudflare Workers'),
@@ -52,6 +52,7 @@ export function GET() {
     row('Email', style.underline(profile.email)),
     row('GitHub', profile.links.github.replace('https://', '')),
     row('LinkedIn', profile.links.linkedin.replace('https://www.', '').replace(/\/$/, '')),
+    row('X', profile.links.x.replace('https://', '')),
     row('Web', host),
     '',
   ];

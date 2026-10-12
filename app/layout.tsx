@@ -65,7 +65,7 @@ const personJsonLd = {
   alumniOf: { '@type': 'CollegeOrUniversity', name: profile.education.school },
   worksFor: profile.currentOrgs.map((org) => ({ '@type': 'Organization', name: org.name, url: org.url })),
   knowsAbout: profile.keywords,
-  sameAs: [profile.links.github, profile.links.linkedin],
+  sameAs: [profile.links.github, profile.links.linkedin, profile.links.x],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

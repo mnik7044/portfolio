@@ -46,13 +46,14 @@ export type Project = {
 
 export const profile = {
   name: 'Nikhil Mishra',
-  role: 'Backend Engineer',
+  role: 'Backend & Product Engineer',
   location: 'Kolkata, India',
   email: 'mnik7044@gmail.com',
   githubUser: 'mnik7044',
   links: {
     github: 'https://github.com/mnik7044',
     linkedin: 'https://www.linkedin.com/in/nikhil-mishra-8a6710244/',
+    x: 'https://x.com/nikktwts',
   },
   currentOrgs: [
     { name: 'Vryse', url: 'https://vryse.co' },
@@ -64,7 +65,7 @@ export const profile = {
     years: '2022 – 2026',
   },
   metaDescription:
-    'Backend engineer in Kolkata building agentic systems, data pipelines and LLM backends — currently at Vryse and Augusta Labs.',
+    'Backend and product engineer in Kolkata. I help teams build AI products and scale them — agentic systems, data pipelines and LLM backends. Currently at Vryse and Augusta Labs.',
   keywords: [
     'Backend engineering',
     'Agentic systems',
@@ -80,7 +81,7 @@ export const profile = {
 };
 
 export const hero = {
-  lead: 'I build the backend half of AI products — **pipelines**, **search** and **agents**, and the infrastructure that keeps them fast, correct and cheap.',
+  lead: 'I help teams **build AI products and scale them**, from first version to production — pipelines, search and agents, and the infrastructure that keeps them fast, correct and cheap.',
   now: 'Now at Vryse & Augusta Labs',
 };
 
@@ -607,20 +608,6 @@ export const projects: Project[] = [
     flows: [{ steps: ['create link|JWT or API key', 'rate limit|3 tiers', '*short code|nanoid or alias', 'redirect', '*click analytics|browser · referrer · day'] }],
     stack: ['Node.js', 'Express', 'MongoDB', 'Jest'],
   },
-  {
-    slug: 'gssoc-23',
-    name: 'GSSoC ’23',
-    group: 'oss',
-    org: 'Open source',
-    year: '2023',
-    glyph: 'G',
-    line: 'First open-source work, through GirlScript Summer of Code.',
-    tagline: 'Where open source started.',
-    story: [
-      'My first open-source contributions, to community projects through GirlScript Summer of Code 2023 — the same year as my first hackathons: Diversion, Hack4Bengal and MLH.',
-    ],
-    stack: ['JavaScript', 'React', 'HTML & CSS'],
-  },
 ];
 
 export const projectBySlug = new Map(projects.map((project) => [project.slug, project]));
@@ -672,7 +659,7 @@ export const writing = {
 };
 
 export const contact = {
-  pitch: 'Building something where the backend has to be both clever and boringly reliable? Email is the fastest way to reach me.',
+  pitch: 'Building a product and need someone who can shape it and build the backend that scales it — from first version to production? Email is the fastest way to reach me.',
 };
 
 export const nav = [

@@ -69,6 +69,9 @@ function Hero() {
               <ExternalLink href={profile.links.linkedin}>LinkedIn</ExternalLink>
             </li>
             <li>
+              <ExternalLink href={profile.links.x}>X</ExternalLink>
+            </li>
+            <li>
               <a className="link" href={`mailto:${profile.email}`}>
                 Email
               </a>
@@ -309,6 +312,9 @@ function Contact() {
                 </li>
                 <li>
                   <ExternalLink href={profile.links.linkedin}>LinkedIn</ExternalLink>
+                </li>
+                <li>
+                  <ExternalLink href={profile.links.x}>X (Twitter)</ExternalLink>
                 </li>
                 {writing.profiles.map((profileLink) => (
                   <li key={profileLink.href}>
