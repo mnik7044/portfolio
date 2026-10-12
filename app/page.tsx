@@ -173,6 +173,11 @@ function Experience() {
 }
 
 function ProjectRow({ project }: { project: Project }) {
+  const link = project.links?.[0];
+  const linkText = link ? shortLink(link.href) : null;
+  // Skip a tag that only repeats the link ("npm" next to an npm link).
+  const tag = project.tag && project.tag.toLowerCase() !== linkText?.toLowerCase() ? project.tag : null;
+
   return (
     <li className="item focus-item">
       <div className="item__row">
@@ -184,10 +189,10 @@ function ProjectRow({ project }: { project: Project }) {
             <Link className="item__anchor" href={`/projects/${project.slug}`}>
               {project.name}
             </Link>
-            {project.tag ? <span className="label">{project.tag}</span> : null}
-            {project.links?.[0] ? (
-              <a className="visit" href={project.links[0].href} target="_blank" rel="noreferrer">
-                {shortLink(project.links[0].href)}
+            {tag ? <span className="label">{tag}</span> : null}
+            {link ? (
+              <a className="visit" href={link.href} target="_blank" rel="noreferrer">
+                {linkText}
                 <ArrowUpRight />
                 {NEW_TAB}
               </a>

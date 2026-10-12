@@ -76,9 +76,9 @@ export default async function ProjectPage({ params }: Params) {
 
         {project.links?.length ? (
           <ul className="project__links rise" style={stagger(4)} role="list">
-            {project.links.map((link, i) => (
+            {project.links.map((link) => (
               <li key={link.href}>
-                <a className={i === 0 ? 'cta cta--primary' : 'cta'} href={link.href} target="_blank" rel="noreferrer">
+                <a className="cta" href={link.href} target="_blank" rel="noreferrer">
                   {link.label}
                   <ArrowUpRight />
                   <span className="sr-only"> (opens in a new tab)</span>
