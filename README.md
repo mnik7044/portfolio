@@ -39,9 +39,9 @@ They animate a single "packet" pass when scrolled into view, loop only while hov
 
 Import the repo in Vercel; no configuration is needed. The canonical URL resolves in this order:
 
-1. `NEXT_PUBLIC_SITE_URL` (set this once you add a custom domain, e.g. `https://nikhilmishra.dev`)
-2. `VERCEL_PROJECT_PRODUCTION_URL` (set automatically by Vercel)
-3. `http://localhost:3000`
+1. `NEXT_PUBLIC_SITE_URL`, if set
+2. `https://godnik.in` in production builds (the `*.vercel.app` domain is never used)
+3. `http://localhost:3000` in development
 
 It is used for metadata, the sitemap, the OG image and the curl card.
 
