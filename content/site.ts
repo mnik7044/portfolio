@@ -255,7 +255,7 @@ export const projects: Project[] = [
       { value: '−76%', label: 'prompt-row reads per report (60 → 14.5 MB)' },
     ],
     stack: ['Trigger.dev', 'Express', 'Firestore', 'OpenAI', 'Claude', 'Gemini', 'Perplexity'],
-    links: [{ label: 'vryse.co', href: 'https://vryse.co' }],
+    links: [{ label: 'Visit vryse.co', href: 'https://vryse.co' }],
   },
   {
     slug: 'geo-agent',
@@ -353,7 +353,31 @@ export const projects: Project[] = [
       { value: '3', label: 'agent frameworks scaffolded' },
     ],
     stack: ['Bun', 'TypeScript', 'Python', 'FastAPI', 'React', 'SQLAlchemy'],
-    links: [{ label: 'create-augusta-app on npm', href: 'https://www.npmjs.com/package/create-augusta-app' }],
+    links: [{ label: 'View on npm', href: 'https://www.npmjs.com/package/create-augusta-app' }],
+  },
+  {
+    slug: 'deckiq',
+    name: 'DeckIQ',
+    group: 'products',
+    org: 'Product site',
+    year: '2026',
+    tag: 'Live',
+    line: 'Site, CMS blog and waitlist for a pitch-deck analytics product — shipped in three days.',
+    tagline: 'Shipped solo in three days.',
+    story: [
+      'The production marketing site for DeckIQ, a pitch-deck analytics product: landing page, a Sanity blog with an embedded Studio, and a waitlist.',
+      'Pages revalidate on a signed webhook and degrade gracefully if the CMS is down. The waitlist absorbs bot submissions and rate-limits by salted IP hash — raw IPs are never stored.',
+    ],
+    flows: [
+      { title: 'Blog', steps: ['Sanity Studio', 'publish webhook|signed', '*revalidate|cache tags', 'Next.js pages|ISR'] },
+      { title: 'Waitlist', steps: ['form', '*API|honeypot · rate limit', 'salted IP hash', 'Neon Postgres|idempotent upsert'] },
+    ],
+    outcomes: [
+      { value: '3 days', label: 'from first commit to production' },
+      { value: '10', label: 'production deploys in those days' },
+    ],
+    stack: ['Next.js 16', 'React 19', 'Sanity', 'Neon Postgres', 'Vercel'],
+    links: [{ label: 'Visit deckiq.ai', href: 'https://deckiq.ai' }],
   },
   {
     slug: 'gyst',
@@ -410,30 +434,6 @@ export const projects: Project[] = [
     stack: ['TypeScript', 'Express', 'Puppeteer', 'Claude', 'Drizzle', 'Docker'],
   },
   {
-    slug: 'deckiq',
-    name: 'DeckIQ',
-    group: 'products',
-    org: 'Product site',
-    year: '2026',
-    tag: 'Live',
-    line: 'Site, CMS blog and waitlist for a pitch-deck analytics product — shipped in three days.',
-    tagline: 'Shipped solo in three days.',
-    story: [
-      'The production marketing site for DeckIQ, a pitch-deck analytics product: landing page, a Sanity blog with an embedded Studio, and a waitlist.',
-      'Pages revalidate on a signed webhook and degrade gracefully if the CMS is down. The waitlist absorbs bot submissions and rate-limits by salted IP hash — raw IPs are never stored.',
-    ],
-    flows: [
-      { title: 'Blog', steps: ['Sanity Studio', 'publish webhook|signed', '*revalidate|cache tags', 'Next.js pages|ISR'] },
-      { title: 'Waitlist', steps: ['form', '*API|honeypot · rate limit', 'salted IP hash', 'Neon Postgres|idempotent upsert'] },
-    ],
-    outcomes: [
-      { value: '3 days', label: 'from first commit to production' },
-      { value: '10', label: 'production deploys in those days' },
-    ],
-    stack: ['Next.js 16', 'React 19', 'Sanity', 'Neon Postgres', 'Vercel'],
-    links: [{ label: 'deckiq.ai', href: 'https://deckiq.ai' }],
-  },
-  {
     slug: 'rank-tracker',
     name: 'Marketplace rank tracker',
     group: 'products',
@@ -458,6 +458,37 @@ export const projects: Project[] = [
   },
 
   /* ---------- freelance ---------- */
+  {
+    slug: 'elephantroom',
+    name: 'elephantroom',
+    group: 'freelance',
+    org: 'Freelance',
+    year: '2026',
+    tag: 'Live',
+    line: 'Landing site for an AI interior-design app, co-built.',
+    tagline: 'AI home design, presented.',
+    story: [
+      'Co-built the marketing site for elephantroom, an AI interior-design app. I engineered the style carousel’s motion — proximity-based easing, timed pauses and snap-to-centre on featured styles, synced to the hero phone screen — and the auto-scrolling brand carousel.',
+      'Our build became the base of the live site.',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Embla'],
+    links: [{ label: 'Visit elephantroom.ai', href: 'https://elephantroom.ai' }],
+  },
+  {
+    slug: 'modernstone',
+    name: 'Modernstone',
+    group: 'freelance',
+    org: 'Freelance',
+    year: '2025',
+    tag: 'Live',
+    line: 'First version of a stonework company’s lead-gen site.',
+    tagline: 'A lead-gen site in a day.',
+    story: [
+      'Built the first version of Modernstone’s lead-generation site in about a day: animated hero, services, a four-step process and the contact flow. The client’s developer has restyled it since.',
+    ],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    links: [{ label: 'Visit modernstone.co', href: 'https://modernstone.co' }],
+  },
   {
     slug: 'age-medical',
     name: 'Age Medical',
@@ -495,22 +526,6 @@ export const projects: Project[] = [
     stack: ['Next.js 16', 'TypeScript', 'Neon Postgres', 'Drizzle', 'better-auth', 'TanStack Query'],
   },
   {
-    slug: 'elephantroom',
-    name: 'elephantroom',
-    group: 'freelance',
-    org: 'Freelance',
-    year: '2026',
-    tag: 'Live',
-    line: 'Landing site for an AI interior-design app, co-built.',
-    tagline: 'AI home design, presented.',
-    story: [
-      'Co-built the marketing site for elephantroom, an AI interior-design app. I engineered the style carousel’s motion — proximity-based easing, timed pauses and snap-to-centre on featured styles, synced to the hero phone screen — and the auto-scrolling brand carousel.',
-      'Our build became the base of the live site.',
-    ],
-    stack: ['Next.js', 'React', 'TypeScript', 'Framer Motion', 'Embla'],
-    links: [{ label: 'elephantroom.ai', href: 'https://elephantroom.ai' }],
-  },
-  {
     slug: 'nivara',
     name: 'Nivara',
     group: 'freelance',
@@ -524,21 +539,6 @@ export const projects: Project[] = [
       'It shipped to production; the company has since replaced it.',
     ],
     stack: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'GSAP'],
-  },
-  {
-    slug: 'modernstone',
-    name: 'Modernstone',
-    group: 'freelance',
-    org: 'Freelance',
-    year: '2025',
-    tag: 'Live',
-    line: 'First version of a stonework company’s lead-gen site.',
-    tagline: 'A lead-gen site in a day.',
-    story: [
-      'Built the first version of Modernstone’s lead-generation site in about a day: animated hero, services, a four-step process and the contact flow. The client’s developer has restyled it since.',
-    ],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
-    links: [{ label: 'modernstone.co', href: 'https://modernstone.co' }],
   },
   {
     slug: 'fengshui-modern',
@@ -574,7 +574,7 @@ export const projects: Project[] = [
     ],
     flows: [{ steps: [['web app', 'mobile app'], '*Express API|18 endpoints', ['MongoDB|cases · records · evidence', 'Firebase Storage|evidence images']] }],
     stack: ['Node.js', 'Express', 'MongoDB', 'Firebase Storage', 'Vercel'],
-    links: [{ label: 'Backend source on GitHub', href: 'https://github.com/Sahakashak/sahakshak-backend' }],
+    links: [{ label: 'Source on GitHub', href: 'https://github.com/Sahakashak/sahakshak-backend' }],
   },
   {
     slug: 'macros',
@@ -590,7 +590,7 @@ export const projects: Project[] = [
     ],
     flows: [{ steps: ['question', 'Vercel AI SDK', '*Gemini|Zod-validated output', 'recommendation'] }],
     stack: ['TypeScript', 'TanStack Start', 'Gemini', 'Zod', 'libSQL'],
-    links: [{ label: 'macros on GitHub', href: 'https://github.com/Sama-004/macros' }],
+    links: [{ label: 'Source on GitHub', href: 'https://github.com/Sama-004/macros' }],
   },
   {
     slug: 'linksnap',

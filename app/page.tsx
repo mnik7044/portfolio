@@ -9,6 +9,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { contact, experience, groups, hero, nav, profile, projectBySlug, projects, rail, stats, writing } from '@/content/site';
 import type { Project } from '@/content/site';
+import { shortLink } from '@/lib/links';
 import { SITE_HOST } from '@/lib/site-url';
 
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties;
@@ -181,6 +182,13 @@ function ProjectRow({ project }: { project: Project }) {
               {project.name}
             </Link>
             {project.tag ? <span className="label">{project.tag}</span> : null}
+            {project.links?.[0] ? (
+              <a className="visit" href={project.links[0].href} target="_blank" rel="noreferrer">
+                {shortLink(project.links[0].href)}
+                <ArrowUpRight />
+                {NEW_TAB}
+              </a>
+            ) : null}
           </span>
           <span className="item__desc">{project.line}</span>
         </span>

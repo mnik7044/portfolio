@@ -2,10 +2,9 @@ import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ExternalLink } from '@/components/ExternalLink';
 import { Flow } from '@/components/Flow';
 import { FlowAnimator } from '@/components/FlowAnimator';
-import { ArrowLeft, ArrowRight, FileIcon } from '@/components/icons';
+import { ArrowLeft, ArrowRight, ArrowUpRight, FileIcon } from '@/components/icons';
 import { Rich } from '@/components/Rich';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -75,23 +74,27 @@ export default async function ProjectPage({ params }: Params) {
           {project.tagline}
         </p>
 
-        <div className="project__story rise" style={stagger(4)}>
+        {project.links?.length ? (
+          <ul className="project__links rise" style={stagger(4)} role="list">
+            {project.links.map((link, i) => (
+              <li key={link.href}>
+                <a className={i === 0 ? 'cta cta--primary' : 'cta'} href={link.href} target="_blank" rel="noreferrer">
+                  {link.label}
+                  <ArrowUpRight />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        <div className="project__story rise" style={stagger(5)}>
           {project.story.map((paragraph) => (
             <p key={paragraph}>
               <Rich text={paragraph} />
             </p>
           ))}
         </div>
-
-        {project.links?.length ? (
-          <ul className="project__links" role="list">
-            {project.links.map((link) => (
-              <li key={link.href}>
-                <ExternalLink href={link.href}>{link.label}</ExternalLink>
-              </li>
-            ))}
-          </ul>
-        ) : null}
 
         <ul className="pills" role="list" aria-label="Stack">
           {project.stack.map((item) => (
