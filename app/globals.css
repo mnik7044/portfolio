@@ -736,6 +736,10 @@ a:focus-visible > .icon-arrow {
     display: inline-flex;
   }
 
+  .display {
+    font-size: clamp(5rem, 1.6rem + 6.4vw, 8rem);
+  }
+
   .display > span {
     display: inline;
   }
@@ -1293,58 +1297,45 @@ a:focus-visible > .icon-arrow {
   }
 }
 
-/* Narrow containers: the strip becomes a vertical pipeline with a rail and stop dots. */
+/* Narrow containers: the strip becomes a clean vertical pipeline — full-width steps, ↓ between them. */
 @container (max-width: 34rem) {
   .flow__track {
-    position: relative;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding-left: 1.15rem;
-  }
-
-  .flow__track::before {
-    content: '';
-    position: absolute;
-    top: 0.9rem;
-    bottom: 0.9rem;
-    left: 0.32rem;
-    width: 1px;
-    background: var(--line-2);
+    align-items: stretch;
+    gap: 0;
   }
 
   .flow__step {
-    position: relative;
-    max-width: 100%;
-  }
-
-  .flow__step::before {
-    content: '';
-    position: absolute;
-    top: 0.85rem;
-    left: -1.05rem;
-    width: 0.45rem;
-    height: 0.45rem;
-    border: 1px solid var(--fg-3);
-    border-radius: 50%;
-    background: var(--bg-2);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .flow__arrow {
-    display: none;
+    align-self: flex-start;
+    margin: 0.3rem 0 0.3rem 0.85rem;
+    transform: rotate(90deg);
   }
 
   .flow__node {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: 0.5rem;
-    padding: 0.35rem 0.6rem;
+    display: grid;
+    width: 100%;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .flow__group {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .flow__group > li {
+    display: grid;
   }
 
   .flow__label,
   .flow__sub {
     white-space: normal;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -1833,6 +1824,15 @@ a:focus-visible > .icon-arrow {
 
 .project__cover-year {
   right: 1rem;
+}
+
+/* Long org names wrap to two lines on phones; lift the glyph clear of them. */
+@media (max-width: 40rem) {
+  .project__cover {
+    aspect-ratio: auto;
+    height: max(10rem, calc((100vw - 2 * var(--gutter)) / 2.4));
+    padding-bottom: 2rem;
+  }
 }
 
 .project__head {
