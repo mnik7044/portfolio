@@ -848,53 +848,11 @@ a:focus-visible > .icon-arrow {
   color: var(--fg);
 }
 
-.job__work {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.35rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* Phones: dates go under the title, and the project chips are dropped because the Projects list follows. */
+/* Phones: dates go under the title. */
 @media (max-width: 39.99rem) {
   .job__head {
     flex-direction: column;
   }
-
-  .job__work {
-    display: none;
-  }
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.6rem;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: var(--step--2);
-  color: var(--fg-2);
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.chip::after {
-  content: '→' / '';
-  color: var(--fg-3);
-  transition: transform 0.25s var(--ease-out);
-}
-
-.chip:hover {
-  border-color: var(--accent-line);
-  background: var(--accent-soft);
-  color: var(--fg);
-}
-
-.chip:hover::after {
-  transform: translateX(2px);
 }
 
 /* Shared chips for stacks */

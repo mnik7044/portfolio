@@ -10,7 +10,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SocialLinks } from '@/components/SocialLinks';
 import { media } from '@/content/media';
-import { contact, experience, groups, hero, nav, profile, projectBySlug, projects, writing } from '@/content/site';
+import { contact, experience, groups, hero, nav, profile, projects, writing } from '@/content/site';
 import type { Project } from '@/content/site';
 import { shortLink } from '@/lib/links';
 import { SITE_HOST } from '@/lib/site-url';
@@ -88,21 +88,6 @@ function Experience() {
               <p className="job__summary">
                 <Rich text={job.summary} />
               </p>
-              {job.projects?.length ? (
-                <ul className="job__work" role="list" aria-label={`Projects at ${job.org}`}>
-                  {job.projects.map((slug) => {
-                    const project = projectBySlug.get(slug);
-                    if (!project) return null;
-                    return (
-                      <li key={slug}>
-                        <Link className="chip" href={`/projects/${slug}`}>
-                          {project.name}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              ) : null}
             </li>
           ))}
         </ol>

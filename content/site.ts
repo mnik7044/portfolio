@@ -17,8 +17,6 @@ export type Job = {
   start: string;
   end: string;
   summary: string;
-  /** Project slugs built in this role. */
-  projects?: string[];
 };
 
 export type ProjectGroup = 'systems' | 'products' | 'freelance' | 'oss';
@@ -91,7 +89,6 @@ export const experience: Job[] = [
     start: 'Jan 2026',
     end: 'Present',
     summary: 'GEO platform. I own the measurement engine, multi-tenant access and the Slack agent.',
-    projects: ['geo-engine', 'geo-agent', 'landing-page-generator', 'rank-tracker'],
   },
   {
     org: 'Augusta Labs',
@@ -100,7 +97,6 @@ export const experience: Job[] = [
     start: 'Mar 2025',
     end: 'Present',
     summary: 'Applied-AI lab in Lisbon. Agentic systems, data pipelines and search for enterprise clients.',
-    projects: ['delivery-brain', 'booking-assistant', 'multisector', 'gyst', 'create-augusta-app'],
   },
   {
     org: 'Memow',
