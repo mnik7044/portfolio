@@ -33,20 +33,18 @@ function Hero() {
 
   return (
     <section className="hero container" id="top" aria-labelledby="hero-title">
-      <h1 className="hero__name rise" id="hero-title" style={stagger(0)}>
-        Nikhil <em>Mishra</em>
-        <span className="accent-dot" aria-hidden="true">
-          .
-        </span>
+      {/* The header already shows the name, so the page heading is for screen readers and search only. */}
+      <h1 className="sr-only" id="hero-title">
+        {profile.name}
       </h1>
 
-      <SocialLinks className="hero__socials rise" style={stagger(1)} />
-
-      <p className="hero__lead rise" style={stagger(2)}>
+      <p className="hero__lead rise" style={stagger(0)}>
         <Rich text={hero.lead} />
       </p>
 
-      <div className="terminal rise" style={stagger(3)}>
+      <SocialLinks className="hero__socials rise" style={stagger(1)} />
+
+      <div className="terminal rise" style={stagger(2)}>
         <span className="terminal__prompt" aria-hidden="true">
           $
         </span>

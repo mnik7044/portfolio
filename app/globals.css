@@ -338,7 +338,7 @@ a:focus-visible > .icon-arrow {
   gap: 0.3em;
   padding-block: 0.35rem;
   font-family: var(--serif);
-  font-size: 1.375rem;
+  font-size: 1.5rem;
   line-height: 1;
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -493,31 +493,9 @@ a:focus-visible > .icon-arrow {
 
 /* ---------- Hero ---------- */
 
-/* Name with the icon links beside it (they drop under the intro on phones), then the intro and the terminal. */
+/* The name lives in the header only: intro, icon links, terminal. */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    'name socials'
-    'lead lead'
-    'terminal terminal';
-  align-items: center;
-  column-gap: 1rem;
-  padding-block: clamp(2rem, 1.5rem + 2.5vw, 4rem) clamp(1.25rem, 1rem + 1.2vw, 2rem);
-}
-
-.hero__name {
-  grid-area: name;
-  font-family: var(--serif);
-  font-size: clamp(2.375rem, 1.9rem + 2.4vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-}
-
-.hero__name em {
-  font-style: italic;
+  padding-block: clamp(1.25rem, 0.9rem + 1.8vw, 2.5rem) clamp(1rem, 0.8rem + 1vw, 1.75rem);
 }
 
 .accent-dot {
@@ -525,15 +503,12 @@ a:focus-visible > .icon-arrow {
 }
 
 .hero__socials {
-  grid-area: socials;
-  /* Pull the last icon's padding out so its glyph lines up with the column edge. */
-  margin-right: -0.5rem;
+  /* Pull the first icon's padding out so its glyph lines up with the text. */
+  margin: 0.6rem 0 0 -0.5rem;
 }
 
 .hero__lead {
-  grid-area: lead;
   max-width: 34rem;
-  margin-top: clamp(1rem, 0.8rem + 1vw, 1.5rem);
   font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
   line-height: 1.6;
   color: var(--fg-2);
@@ -573,12 +548,11 @@ a:focus-visible > .icon-arrow {
 }
 
 .terminal {
-  grid-area: terminal;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   width: 100%;
-  margin-top: clamp(1.1rem, 0.9rem + 1vw, 1.75rem);
+  margin-top: 0.6rem;
   padding: 0.3rem 0.3rem 0.3rem 1rem;
   border: 1px solid var(--line-2);
   border-radius: var(--radius);
@@ -664,26 +638,6 @@ a:focus-visible > .icon-arrow {
   height: 0.95rem;
 }
 
-/* Phones: everything stacks; the icons sit under the intro. */
-@media (max-width: 39.99rem) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      'name'
-      'lead'
-      'socials'
-      'terminal';
-  }
-
-  .hero__socials {
-    margin: 0.5rem 0 0 -0.5rem;
-  }
-
-  .terminal {
-    margin-top: 0.6rem;
-  }
-}
-
 /* Load-in stagger for the hero. */
 @media (prefers-reduced-motion: no-preference) {
   .rise {
@@ -706,9 +660,9 @@ a:focus-visible > .icon-arrow {
   }
 }
 
-/* The name is the LCP element: it eases in without starting invisible, so first paint counts. */
+/* The intro is the LCP element: it eases in without starting invisible, so first paint counts. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__name.rise {
+  .hero__lead.rise {
     animation-name: rise-in-place;
   }
 }
