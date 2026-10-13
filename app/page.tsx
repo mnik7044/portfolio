@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { CopyButton } from '@/components/CopyButton';
 import { ExternalLink, NEW_TAB } from '@/components/ExternalLink';
@@ -7,6 +8,7 @@ import { LocalTime } from '@/components/LocalTime';
 import { Rich } from '@/components/Rich';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
+import { media } from '@/content/media';
 import { contact, experience, groups, hero, nav, profile, projectBySlug, projects, rail, stats, writing } from '@/content/site';
 import type { Project } from '@/content/site';
 import { shortLink } from '@/lib/links';
@@ -177,12 +179,24 @@ function ProjectRow({ project }: { project: Project }) {
   const linkText = link ? shortLink(link.href) : null;
   // Skip a tag that only repeats the link ("npm" next to an npm link).
   const tag = project.tag && project.tag.toLowerCase() !== linkText?.toLowerCase() ? project.tag : null;
+  const brand = media[project.slug]?.brand;
+  const shot = media[project.slug]?.shots?.[0];
 
   return (
     <li className="item focus-item">
       <div className="item__row">
         <span className="thumb" aria-hidden="true">
-          <span className="thumb__card">{project.glyph ?? project.name.charAt(0)}</span>
+          {brand ? (
+            <span className="thumb__card thumb__card--brand" style={{ '--brand': brand.bg } as CSSProperties}>
+              <Image src={brand.mark ?? brand.logo} alt="" sizes="64px" />
+            </span>
+          ) : shot ? (
+            <span className="thumb__card thumb__card--shot">
+              <Image src={shot.src} alt="" sizes="64px" />
+            </span>
+          ) : (
+            <span className="thumb__card">{project.glyph ?? project.name.charAt(0)}</span>
+          )}
         </span>
         <span className="item__body">
           <span className="item__name">

@@ -1,13 +1,16 @@
 import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Flow } from '@/components/Flow';
 import { FlowAnimator } from '@/components/FlowAnimator';
+import { Gallery } from '@/components/Gallery';
 import { ArrowLeft, ArrowRight, ArrowUpRight, FileIcon } from '@/components/icons';
 import { Rich } from '@/components/Rich';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { media } from '@/content/media';
 import { projectBySlug, projects } from '@/content/site';
 import { plain } from '@/lib/text';
 
@@ -38,6 +41,7 @@ export default async function ProjectPage({ params }: Params) {
   const project = projectBySlug.get((await params).slug);
   if (!project) notFound();
 
+  const { brand, shots } = media[project.slug] ?? {};
   const index = projects.indexOf(project);
   const previous = projects[index - 1];
   const next = projects[index + 1];
@@ -60,11 +64,21 @@ export default async function ProjectPage({ params }: Params) {
           </div>
         </nav>
 
-        <div className="project__cover rise" style={stagger(1)} aria-hidden="true">
-          <span className="project__glyph">{project.glyph ?? project.name.charAt(0)}</span>
-          <span className="project__cover-org label">{project.org}</span>
-          <span className="project__cover-year label">{project.year}</span>
-        </div>
+        {brand ? (
+          <div
+            className="project__cover project__cover--brand rise"
+            style={{ ...stagger(1), '--brand': brand.bg } as CSSProperties}
+            aria-hidden="true"
+          >
+            <Image className="project__logo" src={brand.logo} alt="" sizes="(min-width: 48rem) 20rem, 50vw" preload />
+          </div>
+        ) : (
+          <div className="project__cover rise" style={stagger(1)} aria-hidden="true">
+            <span className="project__glyph">{project.glyph ?? project.name.charAt(0)}</span>
+            <span className="project__cover-org label">{project.org}</span>
+            <span className="project__cover-year label">{project.year}</span>
+          </div>
+        )}
 
         <header className="project__head rise" style={stagger(2)}>
           <h1 className="project__title">{project.name}</h1>
@@ -103,6 +117,8 @@ export default async function ProjectPage({ params }: Params) {
             </li>
           ))}
         </ul>
+
+        {shots?.length ? <Gallery shots={shots} name={project.name} /> : null}
 
         {project.outcomes?.length ? (
           <dl className="outcomes project__outcomes">

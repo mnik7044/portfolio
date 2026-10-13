@@ -1508,6 +1508,30 @@ a:focus-visible > .icon-arrow {
   color: var(--accent);
 }
 
+.thumb__card--brand {
+  padding: 0.3rem;
+  overflow: hidden;
+  background: var(--brand);
+}
+
+.thumb__card--brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumb__card--shot {
+  overflow: hidden;
+  background: var(--bg-2);
+}
+
+.thumb__card--shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
 .item:hover .thumb::before {
   transform: rotate(-15deg) translate(-8px, 2px);
 }
@@ -1862,6 +1886,20 @@ a:focus-visible > .icon-arrow {
   }
 }
 
+/* A product's own logo on its brand colour (no dot grid, no labels). */
+.project__cover--brand {
+  padding-bottom: 0;
+  background-color: var(--brand);
+  background-image: none;
+}
+
+.project__logo {
+  width: auto;
+  height: auto;
+  max-width: min(50%, 20rem);
+  max-height: 36%;
+}
+
 .project__head {
   display: flex;
   flex-wrap: wrap;
@@ -1953,6 +1991,141 @@ a:focus-visible > .icon-arrow {
   border-radius: 999px;
   font-size: var(--step--1);
   color: var(--fg-2);
+}
+
+/* Screenshot strip: one 16:10 shot per view, swipe or use the dots; click opens it full size. */
+.gallery {
+  margin-top: clamp(2.25rem, 1.8rem + 2vw, 3rem);
+}
+
+.gallery__track {
+  position: relative;
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 0.75rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__slide {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--bg-2);
+  cursor: zoom-in;
+}
+
+.shot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.shot__bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.shot__bar span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+
+.shot__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.15rem;
+}
+
+.gallery__dot {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.gallery__dot::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--line-2);
+  transition: width 0.3s var(--ease-out), background-color 0.2s ease;
+}
+
+.gallery__dot:hover::before {
+  background: var(--fg-3);
+}
+
+.gallery__dot[aria-current='true']::before {
+  width: 1rem;
+  background: var(--fg-2);
+}
+
+.lightbox {
+  width: min(96vw, 110rem);
+  max-width: none;
+  max-height: 94dvh;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--bg-2);
+}
+
+.lightbox::backdrop {
+  background: rgb(0 0 0 / 0.82);
+}
+
+.lightbox form {
+  margin: 0;
+}
+
+.lightbox__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 94dvh;
+  object-fit: contain;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgb(0 0 0 / 0.6);
+  color: #fff;
+}
+
+.lightbox__close:hover {
+  background: rgb(0 0 0 / 0.8);
+  color: #fff;
 }
 
 .project__outcomes {
