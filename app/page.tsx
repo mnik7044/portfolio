@@ -9,7 +9,7 @@ import { Rich } from '@/components/Rich';
 import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { media } from '@/content/media';
-import { contact, experience, groups, hero, nav, profile, projectBySlug, projects, rail, stats, writing } from '@/content/site';
+import { contact, experience, groups, hero, nav, profile, projectBySlug, projects, stats, writing } from '@/content/site';
 import type { Project } from '@/content/site';
 import { shortLink } from '@/lib/links';
 import { SITE_HOST } from '@/lib/site-url';
@@ -93,19 +93,7 @@ function Hero() {
           </div>
         </div>
 
-        <aside className="rail rise" style={stagger(5)} aria-label="Where I work">
-          {rail.map((item) => (
-            <div className="rail__item" key={item.title}>
-              <p className="label">{item.label}</p>
-              <p className="rail__title">
-                {item.href ? <ExternalLink href={item.href}>{item.title}</ExternalLink> : item.title}
-              </p>
-              <p className="rail__text">{item.text}</p>
-            </div>
-          ))}
-        </aside>
-
-        <dl className="stats rise" style={stagger(6)}>
+        <dl className="stats rise" style={stagger(5)}>
           {stats.map((stat) => (
             <div className="stat" key={stat.label}>
               <dt className="stat__label">
@@ -273,27 +261,55 @@ function Projects() {
   );
 }
 
+function PostRow({ post }: { post: (typeof writing.posts)[number] }) {
+  return (
+    <li className="post focus-item">
+      <div className="post__row">
+        <span className="post__date label">
+          {post.date} · {post.where}
+        </span>
+        <a className="post__title" href={post.href} target="_blank" rel="noreferrer">
+          {post.title}
+          {NEW_TAB}
+        </a>
+        <ArrowUpRight className="post__arrow" />
+      </div>
+    </li>
+  );
+}
+
 function Writing() {
+  const shown = writing.posts.slice(0, writing.visible);
+  const rest = writing.posts.slice(writing.visible);
+
   return (
     <section className="section" id="writing" aria-labelledby="writing-title">
       <div className="container section__body">
         <SectionHead index="03" id="writing-title" title="Writing" meta={writing.meta} />
         <ol className="posts focus-list reveal" role="list">
-          {writing.posts.map((post) => (
-            <li className="post focus-item" key={post.href}>
-              <div className="post__row">
-                <span className="post__date label">
-                  {post.date} · {post.where}
-                </span>
-                <a className="post__title" href={post.href} target="_blank" rel="noreferrer">
-                  {post.title}
-                  {NEW_TAB}
-                </a>
-                <ArrowUpRight className="post__arrow" />
-              </div>
-            </li>
+          {shown.map((post) => (
+            <PostRow key={post.href} post={post} />
           ))}
         </ol>
+        {rest.length ? (
+          <details className="more">
+            <summary>
+              <span className="more__closed">
+                <span aria-hidden="true">more →</span>
+                <span className="sr-only">Show {rest.length} more articles</span>
+              </span>
+              <span className="more__open">
+                <span aria-hidden="true">less ↑</span>
+                <span className="sr-only">Show fewer articles</span>
+              </span>
+            </summary>
+            <ol className="posts focus-list" role="list">
+              {rest.map((post) => (
+                <PostRow key={post.href} post={post} />
+              ))}
+            </ol>
+          </details>
+        ) : null}
         <ul className="writing__all" role="list">
           {writing.profiles.map((profileLink) => (
             <li key={profileLink.href}>

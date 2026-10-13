@@ -44,7 +44,6 @@ import nivara4 from '@/assets/projects/nivara/4.webp';
 import nivaraLogo from '@/assets/projects/nivara/logo.webp';
 import nivaraMark from '@/assets/projects/nivara/mark.webp';
 import vryseLogo from '@/assets/projects/vryse/logo.webp';
-import vryseMark from '@/assets/projects/vryse/mark.webp';
 
 export type Shot = { src: StaticImageData; alt: string };
 
@@ -64,7 +63,7 @@ export type ProjectMedia = {
   shots?: Shot[];
 };
 
-const vryse: Brand = { logo: vryseLogo, mark: vryseMark, bg: '#ffffff', width: '11rem' };
+const vryse: Brand = { logo: vryseLogo, bg: '#4f1c89', width: '14rem' };
 
 // Screenshots are of live public sites, or of local runs on sample/demo data — never real customer
 // or patient data. Internal names in client fixtures were swapped for generic ones before capture.

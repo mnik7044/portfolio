@@ -85,18 +85,6 @@ export const hero = {
   now: 'Now at Vryse & Augusta Labs',
 };
 
-/** Phones only — on wide screens Experience sits right under the hero. */
-export const rail = [
-  { label: 'Now', title: 'Vryse', href: 'https://vryse.co', text: 'GEO platform — how brands show up inside AI answers.' },
-  {
-    label: 'Also now',
-    title: 'Augusta Labs',
-    href: 'https://www.augustalabs.ai',
-    text: 'Applied-AI lab, Lisbon. Agentic systems for enterprises.',
-  },
-  { label: 'Before', title: 'Memow', href: 'https://www.linkedin.com/company/memow-in/', text: 'Founding backend engineer.' },
-];
-
 export const stats = [
   { value: '400k', unit: '+', label: 'companies matched against public funding', source: 'Multisector' },
   { value: '83', unit: '%', label: 'of pilot booking cases needed no human to read prerequisites', source: '3t Global' },
@@ -614,6 +602,8 @@ export const projectBySlug = new Map(projects.map((project) => [project.slug, pr
 
 export const writing = {
   meta: '47 articles',
+  /** Posts shown before "more →". */
+  visible: 3,
   posts: [
     {
       title: 'AWS VPC Deep Dive: Designing Subnets, Route Tables, and NAT Gateways',

@@ -695,41 +695,6 @@ a:focus-visible > .icon-arrow {
   height: 0.95rem;
 }
 
-/* "Now" rail */
-.rail {
-  display: grid;
-  align-content: start;
-  border-top: 1px solid var(--line);
-}
-
-.rail__item {
-  display: grid;
-  gap: 0.35rem;
-  padding-block: clamp(0.9rem, 0.7rem + 0.8vw, 1.15rem);
-  border-bottom: 1px solid var(--line);
-}
-
-.rail__title {
-  font-family: var(--serif);
-  font-size: var(--step-2);
-  line-height: 1.15;
-  letter-spacing: -0.005em;
-}
-
-.rail__text {
-  text-wrap: pretty;
-  font-size: var(--step--1);
-  line-height: 1.55;
-  color: var(--fg-2);
-}
-
-@media (min-width: 40rem) and (max-width: 63.99rem) {
-  .rail {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 2rem;
-  }
-}
-
 /* Wide screens: the name runs on one line, then the intro sits beside the numbers. */
 @media (min-width: 64rem) {
   .hero__now {
@@ -772,10 +737,52 @@ a:focus-visible > .icon-arrow {
   .hero__body .stat:nth-child(n + 3) {
     padding-bottom: 0;
   }
+}
 
-  .rail {
-    display: none;
+/* Phones: a compact intro (name on one line, smaller type) so the work starts sooner. */
+@media (max-width: 39.99rem) {
+  .hero {
+    padding-block: 1.75rem 2.75rem;
   }
+
+  .hero__eyebrow {
+    gap: 0.2rem;
+  }
+
+  .display {
+    margin-top: 0.9rem;
+    font-size: clamp(2.5rem, 12.5vw, 3.4rem);
+    line-height: 0.95;
+  }
+
+  .display > span {
+    display: inline;
+  }
+
+  .display > span + span {
+    margin-left: 0.14em;
+  }
+
+  .hero__body {
+    gap: 1.75rem;
+  }
+
+  .hero__lead {
+    margin-top: 1.1rem;
+    font-size: var(--step-0);
+    line-height: 1.55;
+  }
+
+  .hero__links {
+    gap: 0.25rem 1.4rem;
+    margin-top: 0.85rem;
+    font-size: var(--step--1);
+  }
+
+  .terminal {
+    margin-top: 1rem;
+  }
+
 }
 
 /* Load-in stagger for the hero. */
@@ -875,6 +882,22 @@ a:focus-visible > .icon-arrow {
   color: var(--fg-3);
 }
 
+@media (max-width: 39.99rem) {
+  .stat {
+    gap: 0.35rem;
+    padding-block: 0.95rem;
+  }
+
+  .stat__value {
+    font-size: var(--step-2);
+  }
+
+  .stat__label {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+}
+
 /* ---------- Sections ---------- */
 
 .section__body {
@@ -931,9 +954,10 @@ a:focus-visible > .icon-arrow {
   }
 }
 
-/* Gentle scroll-linked reveal where supported (no JS, never hides content otherwise). */
+/* Gentle scroll-linked reveal where supported (no JS, never hides content otherwise). Not on phones,
+   where the first rows sit at the bottom of the first screen and would stay half-faded until scrolled. */
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 40rem) {
     .reveal {
       animation: reveal linear both;
       animation-timeline: view();
@@ -1011,6 +1035,43 @@ a:focus-visible > .icon-arrow {
   margin: 0.2rem 0 0;
   padding: 0;
   list-style: none;
+}
+
+/* Phones: tighter rows; the project chips are dropped because the Projects list follows. */
+@media (max-width: 39.99rem) {
+  .section__body {
+    padding-block: 2.75rem;
+  }
+
+  .section-head {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-head__title {
+    font-size: var(--step-3);
+  }
+
+  .job {
+    gap: 0.3rem;
+    padding-block: 1rem;
+  }
+
+  .job__body {
+    gap: 0.3rem;
+  }
+
+  .job__title {
+    font-size: var(--step-1);
+  }
+
+  .job__summary {
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+
+  .job__work {
+    display: none;
+  }
 }
 
 .chip {
