@@ -117,7 +117,7 @@ export const experience: Job[] = [
 ];
 
 export const groups: { id: ProjectGroup; title: string; visible: number }[] = [
-  { id: 'systems', title: 'systems', visible: 5 },
+  { id: 'systems', title: 'systems', visible: 3 },
   { id: 'products', title: 'products & tools', visible: 3 },
   { id: 'freelance', title: 'freelance', visible: 3 },
   { id: 'oss', title: 'open source & hackathons', visible: 3 },

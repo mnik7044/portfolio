@@ -146,7 +146,7 @@ function Projects() {
   return (
     <section className="section" id="projects" aria-labelledby="projects-title">
       <div className="container section__body">
-        <SectionHead id="projects-title" title="Projects" meta="Hardest first" />
+        <SectionHead id="projects-title" title="Projects" />
         <div className="shelf">
           {groups.map((group) => {
             const items = projects.filter((project) => project.group === group.id);
