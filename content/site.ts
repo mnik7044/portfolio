@@ -41,7 +41,6 @@ export type Project = {
   links?: Link[];
   /** Small status label, e.g. Live, Pilot, npm. */
   tag?: string;
-  glyph?: string;
 };
 
 export const profile = {
@@ -81,16 +80,8 @@ export const profile = {
 };
 
 export const hero = {
-  lead: 'I help teams **build AI products and scale them**, from first version to production — pipelines, search and agents, and the infrastructure that keeps them fast, correct and cheap.',
-  now: 'Now at Vryse & Augusta Labs',
+  lead: 'Three years of tinkering with all sorts of AI products. Now I help teams **build them and scale them**.',
 };
-
-export const stats = [
-  { value: '400k', unit: '+', label: 'companies matched against public funding', source: 'Multisector' },
-  { value: '83', unit: '%', label: 'of pilot booking cases needed no human to read prerequisites', source: '3t Global' },
-  { value: '5', unit: '', label: 'AI answer engines tracked by one durable pipeline', source: 'Vryse' },
-  { value: '5', unit: '×', label: 'cheaper infrastructure after a cloud migration', source: 'Memow' },
-];
 
 export const experience: Job[] = [
   {
@@ -208,7 +199,7 @@ export const projects: Project[] = [
       },
     ],
     outcomes: [
-      { value: '714 / 855', label: 'cases needed no human read of prerequisite text' },
+      { value: '83%', label: 'of pilot cases (714 of 855) needed no human read of prerequisite text' },
       { value: 'Daily', label: 'expiry pickup, down from a 19–36-day cycle' },
       { value: '43 / 43', label: 'rows matched when porting the legacy procedure' },
     ],
@@ -324,7 +315,6 @@ export const projects: Project[] = [
     org: 'Augusta Labs',
     year: '2026',
     tag: 'npm',
-    glyph: 'c',
     line: 'Augusta Labs’ project scaffolder — I built its React + FastAPI stack.',
     tagline: 'Pick a stack, get a production-shaped repo.',
     story: [
@@ -649,7 +639,7 @@ export const writing = {
 };
 
 export const contact = {
-  pitch: 'Building a product and need someone who can shape it and build the backend that scales it — from first version to production? Email is the fastest way to reach me.',
+  pitch: 'Building an AI product? Email is the fastest way to reach me.',
 };
 
 export const nav = [

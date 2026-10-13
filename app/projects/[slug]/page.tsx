@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Flow } from '@/components/Flow';
 import { FlowAnimator } from '@/components/FlowAnimator';
+import { Folder } from '@/components/Folder';
 import { Gallery } from '@/components/Gallery';
 import { ArrowLeft, ArrowRight, ArrowUpRight, FileIcon } from '@/components/icons';
 import { Rich } from '@/components/Rich';
@@ -74,7 +75,7 @@ export default async function ProjectPage({ params }: Params) {
           </div>
         ) : (
           <div className="project__cover rise" style={stagger(1)} aria-hidden="true">
-            <span className="project__glyph">{project.glyph ?? project.name.charAt(0)}</span>
+            <Folder className="project__folder" shots={shots} sizes="128px" />
             <span className="project__cover-org label">{project.org}</span>
             <span className="project__cover-year label">{project.year}</span>
           </div>

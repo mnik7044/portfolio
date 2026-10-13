@@ -118,16 +118,15 @@ export function SiteHeader({ items }: { items: NavItem[] }) {
       </div>
 
       <nav ref={mobileNav} id="mobile-nav" className="mobile-nav container" aria-label="Sections" hidden={!open}>
-        <ol role="list">
-          {items.map((item, index) => (
+        <ul role="list">
+          {items.map((item) => (
             <li key={item.id}>
               <a href={`#${item.id}`} onClick={() => setOpen(false)}>
-                <span className="label">{String(index + 1).padStart(2, '0')}</span>
                 {item.label}
               </a>
             </li>
           ))}
-        </ol>
+        </ul>
       </nav>
     </header>
   );
