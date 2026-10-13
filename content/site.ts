@@ -116,6 +116,9 @@ export const experience: Job[] = [
   },
 ];
 
+/** Jobs shown before "more →". */
+export const experienceVisible = 2;
+
 export const groups: { id: ProjectGroup; title: string; visible: number }[] = [
   { id: 'systems', title: 'systems', visible: 3 },
   { id: 'products', title: 'products & tools', visible: 3 },

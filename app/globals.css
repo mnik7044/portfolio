@@ -808,6 +808,10 @@ a:focus-visible > .icon-arrow {
   padding-bottom: 0;
 }
 
+.more .jobs {
+  margin-top: 0.75rem;
+}
+
 .job__head {
   display: flex;
   flex-wrap: wrap;

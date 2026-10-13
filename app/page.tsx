@@ -10,8 +10,8 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SocialLinks } from '@/components/SocialLinks';
 import { media } from '@/content/media';
-import { contact, experience, groups, hero, nav, profile, projects, writing } from '@/content/site';
-import type { Project } from '@/content/site';
+import { contact, experience, experienceVisible, groups, hero, nav, profile, projects, writing } from '@/content/site';
+import type { Job, Project } from '@/content/site';
 import { shortLink } from '@/lib/links';
 import { SITE_HOST } from '@/lib/site-url';
 
@@ -61,36 +61,75 @@ function Hero() {
   );
 }
 
+/** "more →" / "less ↑" toggle under a list. */
+function More({ count, what, children }: { count: number; what: string; children: ReactNode }) {
+  return (
+    <details className="more">
+      <summary>
+        <span className="more__closed">
+          <span aria-hidden="true">more →</span>
+          <span className="sr-only">
+            Show {count} more {what}
+          </span>
+        </span>
+        <span className="more__open">
+          <span aria-hidden="true">less ↑</span>
+          <span className="sr-only">Show fewer {what}</span>
+        </span>
+      </summary>
+      {children}
+    </details>
+  );
+}
+
+function JobRow({ job }: { job: Job }) {
+  return (
+    <li className="job">
+      <div className="job__head">
+        <h3 className="job__title">
+          {job.title}
+          <span className="job__at"> at </span>
+          {job.orgUrl ? (
+            <ExternalLink className="link link--accent" href={job.orgUrl}>
+              {job.org}
+            </ExternalLink>
+          ) : (
+            <span className="link--accent">{job.org}</span>
+          )}
+        </h3>
+        <p className="job__when">
+          {job.start} — {job.end}
+        </p>
+      </div>
+      <p className="job__summary">
+        <Rich text={job.summary} />
+      </p>
+    </li>
+  );
+}
+
 function Experience() {
+  const shown = experience.slice(0, experienceVisible);
+  const rest = experience.slice(experienceVisible);
+
   return (
     <section className="section" id="experience" aria-labelledby="experience-title">
       <div className="container section__body">
         <SectionHead id="experience-title" title="Experience" />
         <ol className="jobs" role="list">
-          {experience.map((job) => (
-            <li className="job" key={job.org}>
-              <div className="job__head">
-                <h3 className="job__title">
-                  {job.title}
-                  <span className="job__at"> at </span>
-                  {job.orgUrl ? (
-                    <ExternalLink className="link link--accent" href={job.orgUrl}>
-                      {job.org}
-                    </ExternalLink>
-                  ) : (
-                    <span className="link--accent">{job.org}</span>
-                  )}
-                </h3>
-                <p className="job__when">
-                  {job.start} — {job.end}
-                </p>
-              </div>
-              <p className="job__summary">
-                <Rich text={job.summary} />
-              </p>
-            </li>
+          {shown.map((job) => (
+            <JobRow key={job.org} job={job} />
           ))}
         </ol>
+        {rest.length ? (
+          <More count={rest.length} what="roles">
+            <ol className="jobs" role="list">
+              {rest.map((job) => (
+                <JobRow key={job.org} job={job} />
+              ))}
+            </ol>
+          </More>
+        ) : null}
       </div>
     </section>
   );
@@ -161,25 +200,13 @@ function Projects() {
                   ))}
                 </ul>
                 {rest.length ? (
-                  <details className="more">
-                    <summary>
-                      <span className="more__closed">
-                        <span aria-hidden="true">more →</span>
-                        <span className="sr-only">
-                          Show {rest.length} more {group.title}
-                        </span>
-                      </span>
-                      <span className="more__open">
-                        <span aria-hidden="true">less ↑</span>
-                        <span className="sr-only">Show fewer {group.title}</span>
-                      </span>
-                    </summary>
+                  <More count={rest.length} what={group.title}>
                     <ul className="items focus-list" role="list">
                       {rest.map((project) => (
                         <ProjectRow key={project.slug} project={project} />
                       ))}
                     </ul>
-                  </details>
+                  </More>
                 ) : null}
               </div>
             );
@@ -221,23 +248,13 @@ function Writing() {
           ))}
         </ol>
         {rest.length ? (
-          <details className="more">
-            <summary>
-              <span className="more__closed">
-                <span aria-hidden="true">more →</span>
-                <span className="sr-only">Show {rest.length} more articles</span>
-              </span>
-              <span className="more__open">
-                <span aria-hidden="true">less ↑</span>
-                <span className="sr-only">Show fewer articles</span>
-              </span>
-            </summary>
+          <More count={rest.length} what="articles">
             <ol className="posts focus-list" role="list">
               {rest.map((post) => (
                 <PostRow key={post.href} post={post} />
               ))}
             </ol>
-          </details>
+          </More>
         ) : null}
         <ul className="writing__all" role="list">
           {writing.profiles.map((profileLink) => (
