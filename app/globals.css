@@ -1896,7 +1896,7 @@ a:focus-visible > .icon-arrow {
 .project__logo {
   width: auto;
   height: auto;
-  max-width: min(50%, 20rem);
+  max-width: min(50%, var(--logo-w, 20rem));
   max-height: 36%;
 }
 

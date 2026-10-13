@@ -67,7 +67,7 @@ export default async function ProjectPage({ params }: Params) {
         {brand ? (
           <div
             className="project__cover project__cover--brand rise"
-            style={{ ...stagger(1), '--brand': brand.bg } as CSSProperties}
+            style={{ ...stagger(1), '--brand': brand.bg, '--logo-w': brand.width } as CSSProperties}
             aria-hidden="true"
           >
             <Image className="project__logo" src={brand.logo} alt="" sizes="(min-width: 48rem) 20rem, 50vw" preload />
